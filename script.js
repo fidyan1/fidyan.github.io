@@ -153,13 +153,12 @@ GAYA KOMUNIKASI:
 `,
 
     getKey() {
-        // const HARDCODED_KEY = 'AIzaSy...'; // REMOVED FOR SECURITY
-        return localStorage.getItem('gemini_api_key');
+        // REPLACE THIS WITH YOUR REAL API KEY
+        const HARDCODED_KEY = 'AIzaSyCYUGtSSirYtvd5HhY7bVAxDHHUFSp_wpg'; 
+        return HARDCODED_KEY;
     },
 
-    saveKey(key) {
-        localStorage.setItem('gemini_api_key', key);
-    },
+    // saveKey removed as it is no longer needed
 
     initSession(task) {
         this.chatHistory = []; 
@@ -408,11 +407,10 @@ const UIModule = {
         editPriority: document.getElementById('edit-priority'),
         cancelEditBtn: document.getElementById('cancel-edit'),
 
-        settingsBtn: document.getElementById('settings-btn'),
-        settingsModal: document.getElementById('settings-modal'),
-        settingsForm: document.getElementById('settings-form'),
-        apiKeyInput: document.getElementById('api-key'),
-        cancelSettingsBtn: document.getElementById('cancel-settings'),
+        editPriority: document.getElementById('edit-priority'),
+        cancelEditBtn: document.getElementById('cancel-edit'),
+
+        // Settings elements removed
 
         aiConfirmModal: document.getElementById('ai-confirm-modal'),
         confirmAiBtn: document.getElementById('confirm-ai'),
@@ -710,15 +708,7 @@ const UIModule = {
         };
     },
 
-    // AI & Settings Modals
-    showSettingsModal() {
-        const key = AIModule.getKey();
-        if (key) this.elements.apiKeyInput.value = key;
-        this.toggleModal(this.elements.settingsModal, true);
-    },
-    hideSettingsModal() {
-        this.toggleModal(this.elements.settingsModal, false);
-    },
+    // AI & Settings Modals - Settings methods removed
     showAiConfirmModal(taskId) {
         this.taskToAskAiId = taskId;
         this.toggleModal(this.elements.aiConfirmModal, true);
@@ -864,24 +854,7 @@ const App = {
             }
         });
 
-        // Settings
-        UIModule.elements.settingsBtn.addEventListener('click', () => {
-             UIModule.showSettingsModal();
-        });
-        UIModule.elements.cancelSettingsBtn.addEventListener('click', () => {
-             UIModule.hideSettingsModal();
-        });
-        UIModule.elements.settingsForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const key = UIModule.elements.apiKeyInput.value.trim();
-            if (key) {
-                AIModule.saveKey(key);
-                alert("API Key berhasil disimpan!");
-                UIModule.hideSettingsModal();
-            } else {
-                alert("API Key tidak boleh kosong.");
-            }
-        });
+        // Settings events removed
         
         // AI Confirmation -> START CHAT
         UIModule.elements.cancelAiBtn.addEventListener('click', () => {
@@ -1124,12 +1097,7 @@ const App = {
             }
             
             if (e.target.closest('.btn-ai')) {
-                const key = AIModule.getKey();
-                if (!key) {
-                    alert("Silakan masukkan API Key Gemini di Pengaturan terlebih dahulu.");
-                    UIModule.showSettingsModal();
-                    return;
-                }
+                // Key is now hardcoded, no need to check or alert
                 UIModule.showAiConfirmModal(id);
                 return;
             }
