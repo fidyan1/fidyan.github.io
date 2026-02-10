@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="./vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generator Surat Otomatis</title>
+  <!-- Preconnect for fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="./assets/index-DV4ifBqY.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DZDmovmK.css">
+</head>
+
+<body>
+  <div class="app-container">
+    <header>
+      <h1>Generator Surat Otomatis KSK PRIDE</h1>
+      <p>Buat ribuan surat dalam sekejap. Tanpa login, langsung jadi.</p>
+    </header>
+
+    <main class="grid-layout">
+      <section class="input-section glass-panel">
+        <div class="input-group">
+          <label for="templateFile">Template Surat (.docx)</label>
+          <p class="hint">Upload file Word berisi template (gunakan <code>[nama]</code>).<br>
+            <span style="color: #10b981;">Sekarang mendukung Text Box, Gambar, dan Tabel!</span>
+          </p>
+          <div class="file-upload-wrapper">
+            <input type="file" id="templateFile" accept=".docx" class="file-input" />
+            <div class="file-upload-box">
+              <span class="upload-icon">📄</span>
+              <span class="upload-text">Klik untuk upload Template</span>
+              <span class="file-name-display hidden"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="namesFile">Daftar Nama (.docx)</label>
+          <p class="hint">Upload file Word berisi daftar nama (satu nama per baris/paragraf).</p>
+          <div class="file-upload-wrapper">
+            <input type="file" id="namesFile" accept=".docx" class="file-input" />
+            <div class="file-upload-box">
+              <span class="upload-icon">📋</span>
+              <span class="upload-text">Klik untuk upload Daftar Nama</span>
+              <span class="file-name-display hidden"></span>
+            </div>
+          </div>
+        </div>
+
+        <button id="generateBtn" class="primary-btn">
+          <span class="btn-text">Buat Surat</span>
+          <span class="loader hidden"></span>
+        </button>
+      </section>
+
+      <section class="input-section glass-panel">
+        <div class="input-group">
+          <label for="zipFile">Konversi ZIP (DOCX) ke PDF (Masih Dalam Perbaikan)</label>
+          <p class="hint">Upload file ZIP berisi banyak file DOCX untuk diubah ke PDF sekaligus.</p>
+          <div class="file-upload-wrapper">
+            <input type="file" id="zipFile" accept=".zip" class="file-input" />
+            <div class="file-upload-box">
+              <span class="upload-icon">📦</span>
+              <span class="upload-text">Klik untuk upload ZIP</span>
+              <span class="file-name-display hidden"></span>
+            </div>
+          </div>
+        </div>
+        <button id="convertBtn" class="primary-btn">
+          <span class="btn-text">Konversi ke PDF</span>
+          <span class="loader hidden"></span>
+        </button>
+      </section>
+
+      <section class="output-section glass-panel">
+        <div class="output-header">
+          <h2>Hasil (<span id="count">0</span>)</h2>
+          <div class="download-controls hidden" id="downloadControls">
+            <input type="text" id="zipFilename" placeholder="Nama File (Opsional)" class="small-input" />
+            <button id="downloadAllBtn" class="secondary-btn" disabled>Unduh Semua (.zip)</button>
+          </div>
+        </div>
+        <div id="fileList" class="file-list">
+          <div class="empty-state">
+            <p>Belum ada surat yang dibuat.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+
+</html>
