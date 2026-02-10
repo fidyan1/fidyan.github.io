@@ -1,0 +1,23 @@
+{
+  "name": "web-surat",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "docx-preview": "^0.3.7",
+    "docxtemplater": "^3.67.6",
+    "html2pdf.js": "^0.14.0",
+    "jspdf": "^4.1.0",
+    "jszip": "^3.10.1",
+    "mammoth": "^1.11.0",
+    "pizzip": "^3.2.0"
+  }
+}
